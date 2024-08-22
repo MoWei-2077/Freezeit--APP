@@ -4,13 +4,18 @@
 
 **[MagiskModule]** Emulate the Tombstone mechanism to automatically suspend third-party apps running in the background. 
 
----
+## 项目介绍
+### 该项目Fork于JARK006的Freezeit-APP并继续维护
 
+### 其他链接
+---
 [酷安 @MoWei](https://www.coolapk.com/u/24268987) 
 
 [酷安 @XShee](https://www.coolapk.com/u/20552855) 
 
 [Github @MoWei](https://github.com/MoWei-2077) 
+
+[Github @jark006](https://github.com/jark006) 
 
 [Github @XShee](https://github.com/xsheeee) 
 
