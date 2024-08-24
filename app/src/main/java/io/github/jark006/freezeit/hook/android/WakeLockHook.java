@@ -8,6 +8,8 @@ import android.os.IBinder;
 import android.os.WorkSource;
 
 import de.robv.android.xposed.XC_MethodHook;
+import io.github.jark006.freezeit.base.AbstractMethodHook;
+import io.github.jark006.freezeit.base.MethodHook;
 import io.github.jark006.freezeit.hook.Config;
 import io.github.jark006.freezeit.hook.Enum;
 import io.github.jark006.freezeit.hook.XpUtils;
@@ -19,21 +21,6 @@ public class WakeLockHook {
     public WakeLockHook(Config config, ClassLoader classLoader) {
         this.config = config;
 
-        // A13 SDK T+ 33+
-        // https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:frameworks/base/services/core/java/com/android/server/power/PowerManagerService.java;l=1473
-        // private void acquireWakeLockInternal(IBinder lock, int displayId, int flags, String tag,
-        //        String packageName, WorkSource ws, String historyTag, int uid, int pid,
-        //        @Nullable IWakeLockCallback callback)
-
-        // A12 SDK S+ 31-32
-        // https://cs.android.com/android/platform/superproject/+/android-12.0.0_r34:frameworks/base/services/core/java/com/android/server/power/PowerManagerService.java;l=1358
-        // private void acquireWakeLockInternal(IBinder lock, int displayId, int flags, String tag,
-        //            String packageName, WorkSource ws, String historyTag, int uid, int pid)
-
-        // A10-11 SDK Q-R 29-30
-        // https://cs.android.com/android/platform/superproject/+/android-11.0.0_r48:frameworks/base/services/core/java/com/android/server/power/PowerManagerService.java;l=1278
-        // private void acquireWakeLockInternal(IBinder lock, int flags, String tag, String packageName,
-        //            WorkSource ws, String historyTag, int uid, int pid)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             XpUtils.hookMethod(TAG, classLoader, callback,

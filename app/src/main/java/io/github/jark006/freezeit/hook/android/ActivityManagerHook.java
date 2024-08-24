@@ -1,28 +1,23 @@
 package io.github.jark006.freezeit.hook.android;
 
-import io.github.jark006.freezeit.hook.Enum;
-import android.os.Build;
 import de.robv.android.xposed.XC_MethodHook;
+import io.github.jark006.freezeit.hook.Enum;
+import io.github.jark006.freezeit.base.AbstractMethodHook;
 import io.github.jark006.freezeit.base.MethodHook;
 
-/**
- * 禁用暂停执行已缓存Hook.
- */
-public class CacheFreezerHook extends MethodHook {
-
-
-    public CacheFreezerHook(ClassLoader classLoader) {
+public class ActivityManagerHook extends MethodHook {
+    public ActivityManagerHook(ClassLoader classLoader) {
         super(classLoader);
     }
 
     @Override
     public String getTargetClass() {
-        return Enum.Class.CachedAppOptimizer;
+        return Enum.Class.ActivityManagerService;
     }
 
     @Override
     public String getTargetMethod() {
-        return Enum.Method.useFreezer;
+        return "setSystemProcess";
     }
 
     @Override
@@ -32,19 +27,21 @@ public class CacheFreezerHook extends MethodHook {
 
     @Override
     public XC_MethodHook getTargetHook() {
+        return new AbstractMethodHook() {
+            @Override
+            protected void beforeMethod(MethodHookParam param) {
 
-        // 返回不使用暂停执行已缓存
-        return constantResult(false);
+            }
+        };
     }
 
     @Override
     public int getMinVersion() {
-        return Build.VERSION_CODES.R;
+        return ANY_VERSION;
     }
 
     @Override
     public String successLog() {
-        return "已屏蔽暂停执行已缓存";
+        return "已屏蔽活动助手";
     }
-    
 }

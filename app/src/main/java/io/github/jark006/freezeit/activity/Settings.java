@@ -41,7 +41,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch batterySwitch, currentSwitch,
-            lmkSwitch, dozeSwitch, BinderFreezerSwith, RekernelSwitch, checkReFreezeSwitch, checkUnFreezeSwitch, dozeDebugSwitch;
+            lmkSwitch, dozeSwitch, BinderFreezerSwith, RekernelSwitch, checkReFreezeSwitch, checkUnFreezeSwitch, handlememorycompressSwitch, dozeDebugSwitch;
 
     final int freezeTimeoutIdx = 2;
     final int wakeupTimeoutIdx = 3;
@@ -58,7 +58,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
     final int checkReFreezeIdx = 32;
     final int BinderFreezerIdx = 33;
     final int checkUnFreezeIdx = 35;
-
+    final int handlememorycompressIdx =36;
     byte[] settingsVar = new byte[256];
     long lastTimestamp = 0;
 
@@ -84,6 +84,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         findViewById(R.id.BinderFreezer_title).setOnClickListener(this);
         findViewById(R.id.Rekernel_title).setOnClickListener(this);
         findViewById(R.id.checkReFreeze_title).setOnClickListener(this);
+        findViewById(R.id.handlememorycompress_title).setOnClickListener(this);
         findViewById(R.id.doze_debug_title).setOnClickListener(this);
 
         findViewById(R.id.set_bg).setOnClickListener(this);
@@ -106,6 +107,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
         RekernelSwitch = findViewById(R.id.switch_Rekernel);
         checkReFreezeSwitch = findViewById(R.id.switch_checkReFreeze);
         checkUnFreezeSwitch = findViewById(R.id.switch_checkUnFreeze);
+        handlememorycompressSwitch = findViewById(R.id.switch_handlememorycompress);
+
         dozeDebugSwitch = findViewById(R.id.switch_doze_debug);
         if (this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -296,6 +299,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
                     InitSwitch(RekernelSwitch, RekernelIdx);
                     InitSwitch(checkReFreezeSwitch, checkReFreezeIdx);
                     InitSwitch(checkUnFreezeSwitch, checkUnFreezeIdx);
+                    InitSwitch(handlememorycompressSwitch, handlememorycompressIdx);
                     break;
 
                 case SET_VAR_SUCCESS:
@@ -339,6 +343,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener 
             Utils.textDialog(this, R.string.checkReFreeze_title, R.string.checkReFreeze_tips);
         } else if (id == R.id.checkUnFreeze_title) {
             Utils.textDialog(this, R.string.checkUnFreeze_title, R.string.checkUnFreeze_tips);
+        } else if (id == R.id.handlememorycompress_title) {
+            Utils.textDialog(this, R.string.handlememorycompress_title, R.string.handlememorycompress_tips);
         } else if (id == R.id.doze_debug_title) {
             Utils.textDialog(this, R.string.doze_debug_title, R.string.doze_debug_tips);
         } else if (id == R.id.set_bg) {

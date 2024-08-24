@@ -119,7 +119,7 @@ public class AndroidService {
             @Override
             protected void afterHookedMethod(MethodHookParam param) {
                 appOps = param.thisObject;
-                log(WAK_TAG, ((appOps == null ? "!!! Fail" : "Success")) + " init appOpsService");
+                log(WAK_TAG, ((appOps == null ? "!!! 失败" : "Success")) + " init appOpsService");
             }
         };
 
@@ -136,7 +136,7 @@ public class AndroidService {
             @Override
             protected void afterHookedMethod(XC_MethodHook.MethodHookParam param) {
                 mPowerState = XposedHelpers.getObjectField(param.thisObject, Enum.Field.mPowerState);
-                log(WAK_TAG, ((mPowerState == null ? "!!! Fail" : "Success")) + " init mPowerState");
+                log(WAK_TAG, ((mPowerState == null ? "!!! Fail" : "成功")) + " init mPowerState");
             }
         }, Enum.Class.DisplayPowerController, Enum.Method.initialize, int.class);
 

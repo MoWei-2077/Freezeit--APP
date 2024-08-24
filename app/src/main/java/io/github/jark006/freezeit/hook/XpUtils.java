@@ -42,6 +42,9 @@ public class XpUtils {
         XposedBridge.hookMethod(constructor, callback);
         log(TAG, "HookConstructor success: " + className);
     }
+    public static Object call(Object thisObject, String method, Object... args) {
+        return XposedHelpers.callMethod(thisObject, method, args);
+    }
 
     public static int getInt(final Object obj, final String fieldName) {
         try {

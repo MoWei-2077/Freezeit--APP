@@ -12,7 +12,8 @@ public class Enum {
 
     public final static class Class {
         public final static String self = BuildConfig.APPLICATION_ID + ".fragment.Home";
-
+        public static final String PROCESS_RECORD = "com.android.server.am.ProcessRecord";
+        public final static String ACTIVITY_MANAGER_SERVICE = "com.android.server.am.ActivityManagerService";
         public final static String BroadcastQueue = "com.android.server.am.BroadcastQueue";
         public final static String BroadcastQueueImpl = "com.android.server.am.BroadcastQueueImpl"; //SDK 34+
         public final static String BroadcastQueueModernImpl = "com.android.server.am.BroadcastQueueModernImpl"; //SDK 34+
@@ -76,6 +77,9 @@ public class Enum {
 
     public final static class Method {
         public final static String isXposedActive = "isXposedActive";
+        public static final String CHECK_EXCESSIVE_POWER_USAGE_LPR = "checkExcessivePowerUsageLPr";
+        public static final String GET_CALLING_UID = "getCallingUid";
+        public static final String GET_CALLING_PID = "getCallingPid";
         public final static String useFreezer = "useFreezer";
         public final static String add = "add";
         public final static String deliverToRegisteredReceiverLocked = "deliverToRegisteredReceiverLocked";
@@ -117,6 +121,10 @@ public class Enum {
 
     public final static class Field {
         public final static String packageName = "packageName";
+        public final static String mFlags = "mFlags";
+        public final static String mLock = "mLock";
+        public final static String mOwnerUid = "mOwnerUid";
+        public final static String mDisabled = "mDisabled";
         public final static String info = "info";
         public final static String callerPackage = "callerPackage";
         public final static String receiverList = "receiverList";
